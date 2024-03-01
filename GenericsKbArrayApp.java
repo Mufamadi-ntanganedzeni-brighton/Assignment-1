@@ -17,8 +17,48 @@ public class GenericsKbArrayApp {
         return newArray;
   }
   public static void main(String[] args) {
+  
+   Scanner scanner = new Scanner(System.in);
+
+   System.out.println("Choose an action from the menu:");
+   System.out.println("1. Load a knowledge base from a file");
+   System.out.println("2. Add a new statement to the knowledge base");
+   System.out.println("3. Search for an item in the knowledge base by term");
+   System.out.println("4. Search for a item in the knowledge base by term and sentence");
+   System.out.println("5. Quit");
+   System.out.println("");
+   System.out.printf("Enter your choice: ");
+   int userChoice = scanner.nextInt();
+   //System.out.printf("userChoice: "+userChoiced);
+   System.out.println("");
+   //String garbage = scanner.nextLine();
+   String fileName = "";
+   switch (userChoice) {
+      case 1:
+         System.out.printf("Enter file name: ");
+         fileName = scanner.next();
+         System.out.println("file name: "+fileName);
+         break;
+      case 2:
+         System.out.println("2 Selected");
+         break;
+      case 3:
+         System.out.println("3 Selected");
+         break;
+      case 4:
+         System.out.println("4 Selected");
+         break;
+      case 5:
+         System.out.println("5 Selected");
+         break;
+      default:
+         System.out.println("Invalid choice");
+         break;
+   }
+   
+   
     try {
-      File myObj = new File("GenericsKB.txt");
+      File myObj = new File(fileName);
       Scanner myReader = new Scanner(myObj);
       String [][] allLines = new String [50000][3];
       int count = 0;
@@ -49,16 +89,16 @@ public class GenericsKbArrayApp {
       if (!updated) {
          allLines = addElement(allLines, addArray);
       }
-      //System.out.println(allLines[0][1]);
-      System.out.println(allLines[2][0]);
-      System.out.println(allLines[2][1]);
-      System.out.println(allLines[2][2]);
+      System.out.println("Knowledge base loaded successfully.");
+      //System.out.println(allLines[2][0]);
+      //System.out.println(allLines[2][1]);
+      //System.out.println(allLines[2][2]);
 
-      System.out.println("There are "+count+ " lines.");
+      //System.out.println("There are "+count+ " lines.");
       
       myReader.close();
     } catch (FileNotFoundException e) {
-      System.out.println("An error occurred.");
+      System.out.println("File doesn't exist.");
       e.printStackTrace();
     }
   }
